@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Smart Lighting Digital Twin</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- Custom CSS -->
+	<style>
+		.light {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			margin: 10px;
+			display: inline-block;
+		}
+	</style>
+    <!-- Custom CSS -->
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container my-5">
+		<h1 class="text-center">Smart-Lighting Application</h1>
+		<div id="light-container" class="text-center">
+			<div id="light1" class="light" style="background-color: #FFD700;"></div>
+			<div id="light2" class="light" style="background-color: #FFD700;"></div>
+			<div id="light3" class="light" style="background-color: #FFD700;"></div>
+		</div>
+		<form class="mt-5">
+			<div class="form-group">
+				<label for="light-select">Select Light:</label>
+				<select class="form-control" id="light-select">
+					<option value="light1">Light 1</option>
+					<option value="light2">Light 2</option>
+					<option value="light3">Light 3</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="color-select">Select Color:</label>
+				<input type="color" class="form-control" id="color-select">
+			</div>
+			<button type="button" class="btn btn-primary" id="update-button">Update</button>
+		</form>
+	</div>
+	<!-- Bootstrap JS and jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<!-- Custom JavaScript -->
+	<script>
+		$(document).ready(function() {
+			// Set initial colors for each light
+			var light1 = "#FFD700";
+			var light2 = "#FFD700";
+			var light3 = "#FFD700";
+
+			// Update light color when form is submitted
+			$("#update-button").click(function() {
+				var light = $("#light-select").val();
+				var color = $("#color-select").val();
+				$("#" + light).css("background-color", color);
+				// Update variable with new color value
+				eval(light + " = '" + color + "'");
+			});
+		});
+	</script>
+</body>
+</html>
